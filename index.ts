@@ -86,12 +86,15 @@ function eratosthenePrimeNumberArray(naturalNumber: number):number[] | undefined
             list[q] = false;
         }
     }
-    const resultArray = list.reduce(function(accumulator: number[], currentValue: boolean, index: number) {
-        if (currentValue === true) {
-            accumulator.push(index);
+    const testResultArray = list.filter((value: boolean) => value);
+    const resultArray = new Array<number>(testResultArray.length).fill(0);
+    for(let i=2, j=0; i < list.length; i++) {
+
+        if (list[i]) {
+            resultArray[j] = i;
+            j++;
         }
-        return accumulator;
-    }, [])
+    }
     return resultArray;
 }
 
@@ -113,7 +116,7 @@ console.log(`num2: ${num2} array2: ` + array2);
 console.log(`num2: ${num2} array25:` + array25);
 console.log(`num2: ${num2} array27:` + array27);
 
-// const num3 = 2147483647
-// const array3 = eratosthenePrimeNumberArray(num3);
+const num3 = 2147483647
+const array3 = eratosthenePrimeNumberArray(num3);
 
 // console.log(`num3: ${num3} array3: ` + array3);
